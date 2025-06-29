@@ -86,4 +86,5 @@ This setup allows your stopwatch to show each digit clearly and efficiently.
 
 
 ## Practical implementation Photos:
-[Entire Circuit]()
+[Entire Circuit](https://github.com/Manvi1670/STOP-CLOCK/blob/0c46ffac323a01b043ce51217551cee434ce8d7e/Whole%20circuit.jpeg)
+[Clock Generator with 555 timer]()

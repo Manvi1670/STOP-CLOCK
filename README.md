@@ -15,6 +15,15 @@ To design and implement a digital stopwatch with the following features:
 - **START**: Begins counting in 0.01-second increments. The display updates in real-time until the button is pressed again.
 - **STOP**: Freezes the current time on the display. Pressing the button once more resets the stopwatch and returns it to the initial state.
 
+### 🔄 State Machine Logic
+
+```plaintext
+[RESET] --(Button Press)--> [START]
+[START] --(Button Press)--> [STOP]
+[STOP]  --(Button Press)--> [RESET]
+```
+
+
 ## 🛠️ System Components
 
 ### 1. **Clock Generator (10 ms Pulse)**
@@ -46,24 +55,35 @@ To design and implement a digital stopwatch with the following features:
 
 ---
 
+## 🔷 7447 – BCD to 7-Segment Decoder
 
-### 4. **Display Driver**
-- **Decoder**: BCD to 7-segment decoder IC.
-- **Display**: Four 7-segment LED displays.
-- **Format**: First two digits for seconds, last two for hundredths of a second.
+The **7447** is a decoder IC that converts a **4-bit BCD input** into signals to drive a **common-anode 7-segment display**, showing digits **0 to 9**.
+
+### Key Points:
+- **Inputs**: A, B, C, D (BCD from counter)
+- **Outputs**: a–g (active-low segment controls)
+- **Used with**: Common-anode displays
+
+### 🔗 Connection to 74160:
+- The **QA–QD outputs** of each 74160 BCD counter are connected to the **A–D inputs** of a 7447.
+- Each 7447 then drives one **7-segment display**, showing the corresponding digit.
+
+This setup allows your stopwatch to visually display the count from each 74160 stage.
+
+
+
+---
+Here’s a **short description** of a **7-segment common anode LED display** for your stopwatch project:
 
 ---
 
-## 🔄 State Machine Logic
+## 🔷 7-Segment Common Anode Display
 
-```plaintext
-[RESET] --(Button Press)--> [START]
-[START] --(Button Press)--> [STOP]
-[STOP]  --(Button Press)--> [RESET]
-```
+A **7-segment common anode display** has all anodes connected to **Vcc**, and each segment (a–g) lights up when its **cathode is pulled LOW**.
 
-- **State Transitions**: Triggered by a single debounced push-button.
-- **Control Logic**: Implemented using flip-flops or FSM logic to track state.
+### Key Points:
+- Displays digits 0–9 using 7 LEDs
+- Works with **7447 decoder IC**, which provides active-low outputs
+- Each **7447** receives BCD input from a **74160 counter** and drives one display
 
----
-
+This setup allows your stopwatch to show each digit clearly and efficiently.

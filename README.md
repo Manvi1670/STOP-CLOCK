@@ -21,20 +21,31 @@ To design and implement a digital stopwatch with the following features:
 - **IC Used**: A 555 timer is an integrated circuit used to generate precise time delays or oscillations, commonly configured three modes such as astable, monostable,and bistable modes.
 - **Configuration**:In astable mode, the 555 timer functions as a free-running oscillator—it continuously switches between high and low output states without any external triggering. This makes it ideal for generating clock pulses, hence we used it for generating  10 ms clock used in our project.
 - **LT Spice simulation**:[Circuit](https://github.com/Manvi1670/STOP-CLOCK/blob/40ddc953ea36c8df6870716ed4e70b379bcfeef0/Timer%20-%20555%20Lt%20Spice%20simulation.png) 
-- **Purpose**: Drives the synchronous counter to increment every 0.01 seconds.
+
 
 ### 2. **Debouncing Circuit**
-- **Challenge**: Mechanical switches produce noisy transitions.
-- **Solution**: RC filter followed by a Schmitt trigger or SR latch.
+- **Purpose**: Mechanical switches generate noisy signals due to contact bounce, which can cause multiple false triggers in digital circuits. Debouncing ensures a clean,        single transition per press, making systems like stopclocks or counters behave reliably.
+- **Circuit**: The RC network smooths out the rapid voltage fluctuations caused by contact bounce, and the Schmitt trigger converts this analog signal into a clean digital transition with hysteresis, ensuring reliable state changes in the stopclock.
 - **Simulation**: Verified using LTSpice to ensure clean, single-edge transitions.
 
-### 3. **Synchronous BCD Counter (16-bit)**
-- **ICs Used**: 74160–74163 series.
-- **Design**:
-  - Four 4-bit counters cascaded to form a 16-bit counter.
-  - Common clock input for full synchronization.
-  - Carry-look-ahead logic using ENP and ENT pins for seamless cascading.
-- **Datasheet Reference**: SN54LS161A (Pages 1, 4, 11, 22).
+### 3.Counters**
+- **ICs Used**: 74160 , 74161
+
+## 🔍 IC 74160 vs IC 74161
+
+| Feature                  | **IC 74160**                                | **IC 74161**                                |
+|--------------------------|---------------------------------------------|---------------------------------------------|
+| **Type**                 | BCD (Binary-Coded Decimal) Counter          | Binary Counter                              |
+| **Count Range**          | 0 to 9 (0000 to 1001 in binary)             | 0 to 15 (0000 to 1111 in binary)            |
+| **Clear Type**           | Asynchronous Clear                          | Asynchronous Clear                          |
+| **Load Type**            | Synchronous Load                            | Synchronous Load                            |
+| **Enable Inputs**        | ENP and ENT                                 | ENP and ENT                                 |
+| **Ripple Carry Output**  | HIGH at count 9 if ENT is HIGH              | HIGH at count 15 if ENT is HIGH             |
+| **Clock Trigger**        | Rising edge                                 | Rising edge                                 |
+
+
+---
+
 
 ### 4. **Display Driver**
 - **Decoder**: BCD to 7-segment decoder IC.

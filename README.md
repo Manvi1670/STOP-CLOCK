@@ -20,7 +20,7 @@ To design and implement a digital stopwatch with the following features:
 ### 1. **Clock Generator (10 ms Pulse)**
 - **IC Used**: A 555 timer is an integrated circuit used to generate precise time delays or oscillations, commonly configured three modes such as astable, monostable,and bistable modes.
 - **Configuration**:In astable mode, the 555 timer functions as a free-running oscillator—it continuously switches between high and low output states without any external triggering. This makes it ideal for generating clock pulses, hence we used it for generating  10 ms clock used in our project.
-- **LT Spice simulation**:[Circuit]() 
+- **LT Spice simulation**:[Circuit](https://github.com/Manvi1670/STOP-CLOCK/blob/40ddc953ea36c8df6870716ed4e70b379bcfeef0/Timer%20-%20555%20Lt%20Spice%20simulation.png) 
 - **Purpose**: Drives the synchronous counter to increment every 0.01 seconds.
 
 ### 2. **Debouncing Circuit**

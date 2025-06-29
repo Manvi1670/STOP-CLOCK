@@ -37,7 +37,7 @@ To design and implement a digital stopwatch with the following features:
 - **Circuit**: The RC network smooths out the rapid voltage fluctuations caused by contact bounce, and the Schmitt trigger converts this analog signal into a clean digital transition with hysteresis, ensuring reliable state changes in the stopclock.
 - **Simulation**: Verified using LTSpice to ensure clean, single-edge transitions.
 
-### 3.Counters**
+### 3.Counters
 - **ICs Used**: 74160 , 74161
 
 ## 🔍 IC 74160 vs IC 74161
@@ -55,7 +55,7 @@ To design and implement a digital stopwatch with the following features:
 
 ---
 
-## 🔷 7447 – BCD to 7-Segment Decoder
+## 🔷 7447 - Decoder
 
 The **7447** is a decoder IC that converts a **4-bit BCD input** into signals to drive a **common-anode 7-segment display**, showing digits **0 to 9**.
 
@@ -72,10 +72,6 @@ This setup allows your stopwatch to visually display the count from each 74160 s
 
 
 
----
-Here’s a **short description** of a **7-segment common anode LED display** for your stopwatch project:
-
----
 
 ## 🔷 7-Segment Common Anode Display
 
@@ -87,3 +83,7 @@ A **7-segment common anode display** has all anodes connected to **Vcc**, and ea
 - Each **7447** receives BCD input from a **74160 counter** and drives one display
 
 This setup allows your stopwatch to show each digit clearly and efficiently.
+
+
+## Practical implementation Photos:
+[Entire Circuit]()
